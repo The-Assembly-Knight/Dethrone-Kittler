@@ -10,13 +10,14 @@ config_version=5
 
 [application]
 
-config/name="The-Shadow-Puppet"
+config/name="Dethrone-Kittler"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [debug]
 
 settings/stdout/print_fps=true
+gdscript/warnings/untyped_declaration=2
 
 [display]
 
@@ -29,6 +30,11 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="The-Shadow-Puppet"
+
+[global_group]
+
+player=""
+enemy=""
 
 [input]
 
@@ -55,5 +61,6 @@ fall_a={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

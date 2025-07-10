@@ -4,11 +4,17 @@ shader_type canvas_item;
 const vec2 screenSize = vec2(320, 200);
 //La textura de la pared
 uniform sampler2D bitmap;
+
+// No pude encontrar donde inicializaste el bitmap de las paredes asi q cree otro xdxdxdxd
+// Lo logre encontrar, pero no voy ponerlo en el bitmap con un offset porq me da pereza son las 2:23am
+uniform sampler2D bitmap_enemy;
+
 //El array con los datos de distancia y offset para textura
 uniform float distanceToW[320 * 2];
 //La maxima distancia posible
 uniform float maxDistance = 100.0;
 
+uniform int rayHitType[320];
 
 //Mi implementación de la función remap (está explicada en la documentación oficial de Godot
 float remap(float value, float istart, float istop, float ostart, float ostop) {
@@ -36,7 +42,12 @@ void fragment() {
 		float textureY = remap(coords.y, 100.0 - (verticalProy/2.0), 100.0 + (verticalProy/2.0), 0, 1.0);
 		vec2 texVec = vec2(textureX, textureY);
 		//Extraer el color correspondiente de la textura
-		COLOR = texture(bitmap, texVec);
+        if (rayHitType[int(coords.x)] == 1) {
+            COLOR = texture(bitmap_enemy, texVec);
+        } else {
+            COLOR = texture(bitmap, texVec);
+        }
+		
 	}
 }
 

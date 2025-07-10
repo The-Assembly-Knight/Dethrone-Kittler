@@ -18,16 +18,18 @@ const screenRes : Vector2 = Vector2(320, 200)
 func generateRaycasts() -> void:
 	for i in range(screenRes.x):
 		var ray : RayCast2D = RayCast2D.new()
+		ray.collide_with_areas = true
+		ray.collide_with_bodies = true
 		var radAngle : float = deg_to_rad(remap(i, 0, screenRes.x - 1, -FOV/2, FOV/2))
 		ray.target_position = Vector2(maxDistance, 0).rotated(radAngle)
 		get_parent().rayList.append(ray)
 		add_child(ray)
 
-func _ready():
+func _ready() -> void:
 	generateRaycasts()
 
 #Control de movimiento y giro
-func _process(delta: float):
+func _process(delta: float) -> void:
 	var dirMov : float = Input.get_axis("fall_s", "fall_w")
 	velocity = (dirMov * movSpeed) * Vector2.from_angle(rotation)
 	var dirRot : float = Input.get_axis("fall_a", "fall_d")
