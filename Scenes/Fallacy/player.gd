@@ -34,5 +34,8 @@ func _process(delta: float) -> void:
 	velocity = (dirMov * movSpeed) * Vector2.from_angle(rotation)
 	var dirRot : float = Input.get_axis("fall_a", "fall_d")
 	rotation_degrees += rotationSpeed * dirRot * delta
+	var steerMov : float = Input.get_axis("fall_f", "fall_h")
+	if steerMov != 0:
+		velocity = movSpeed * Vector2.from_angle(rotation + deg_to_rad(steerMov * 90))
 	get_parent().giveInfoToShader()
 	move_and_slide()

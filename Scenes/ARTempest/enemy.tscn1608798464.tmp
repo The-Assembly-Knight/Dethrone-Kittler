@@ -16,4 +16,3 @@ texture = ExtResource("2_2rqti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy"]]
 shape = SubResource("RectangleShape2D_krxwm")
-disabled = true
