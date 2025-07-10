@@ -92,6 +92,3 @@ func giveInfoToShader() -> void:
 	mat.set_shader_parameter("indexEnemy", indexEnemy)
 	mat.set_shader_parameter("centerEnemy", centerEnemy)
 	mat.set_shader_parameter("distanceEnemy", distanceEnemy)
-	
-	mat.set_shader_parameter("playerPosition", player.position)
-	mat.set_shader_parameter("playerVelocity", player.velocity)

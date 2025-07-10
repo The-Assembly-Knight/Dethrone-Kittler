@@ -6,9 +6,6 @@ const vec2 screenSize = vec2(320, 200);
 uniform sampler2D bitmap;
 //La textura del suelo
 uniform sampler2D floorBitmap;
-//Posición y velocidad del jugador en coordenadas globales
-uniform vec2 playerPosition;
-uniform vec2 playerVelocity;
 
 //Array con las texturas de los enemigos
 uniform sampler2D bitmap_enemy[16];
@@ -60,7 +57,7 @@ void fragment() {
 	float verticalProyWall = 16.0 / distanceToWall * 277.0;
 	//Si ninguna de las condiciones abajo se cumple, dibuja el suelo
 	COLOR = drawFloor(UV);
-	
+
 	//Si el las coordenadas del pixel están entre el rango de la altura de la pared
 	if (100.0 - (verticalProyWall/2.0) < coords.y && coords.y < 100.0 + (verticalProyWall/2.0)){
 		//Convertir el offset de la textura en coordenadas UV
@@ -71,7 +68,7 @@ void fragment() {
 		//Extraer el color correspondiente de la textura
 		COLOR = mix(texture(bitmap, texVec), vec4(0.0, 0.0, 0.0, 1.0), remap(distanceToWall, 0, maxDistance, 0, 1.0));
 	}
-	
+
 	for (int i = 15; i >= 0; i--){
 		float verticalProyEnemy = 16.0 / distanceEnemy[i] * 277.0;
 		float halfVertProyEnemy = (verticalProyEnemy/2.0);

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var textureIndex : int = 1
+@export var textureIndex : int = 0
 var player : Player
 
 # Called when the node enters the scene tree for the first time.
